@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7f5">
+  <meta name="description" content="Oreilles, queue, regard : explorez quelques signaux du langage corporel des chats.">
+  <title>Le langage du chat — Les chats</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand" aria-label="Les chats, un monde à part">
+      <span class="brand-mark" aria-hidden="true">c.</span>
+      <span>LES CHATS<br><span class="brand-subtitle">UN MONDE À PART</span></span>
+    </div>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <button class="nav-button" type="button" data-go="index.html">Découvrir <span aria-hidden="true">↗</span></button>
+      <span class="nav-current" aria-current="page">Leur langage</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="signals-hero">
+      <div class="signals-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> OBSERVER AVANT D’INTERPRÉTER</p>
+        <h1>Il parle.<br><em>Sans les mots.</em></h1>
+        <p class="hero-intro">Oreilles, posture, queue, regard : le corps du chat donne des indices. Choisissez un signal pour en découvrir quelques pistes.</p>
+        <div class="hero-caption"><span class="caption-rule"></span> 02 / 02 <span>UN LANGAGE DE NUANCES</span></div>
+      </div>
+      <div class="signals-image-wrap">
+        <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&amp;fit=crop&amp;w=1300&amp;q=85" alt="Portrait rapproché d’un chat au regard attentif">
+        <span class="image-index">GESTES / INDICES</span>
+      </div>
+    </section>
+
+    <section class="signal-explorer" aria-labelledby="signal-title">
+      <div class="explorer-heading">
+        <p class="eyebrow">À VOUS DE REGARDER</p>
+        <h2 id="signal-title">Qu’observez-vous ?</h2>
+        <p>Un geste ne suffit pas toujours : le contexte compte autant que le signal.</p>
+      </div>
+      <div class="explorer-layout">
+        <div class="signal-controls" role="group" aria-label="Choisir un signal du chat">
+          <button class="signal-choice is-selected" type="button" data-signal="tail" aria-pressed="true"><span class="choice-icon" aria-hidden="true">↟</span><span>La queue</span><span class="choice-arrow" aria-hidden="true">→</span></button>
+          <button class="signal-choice" type="button" data-signal="ears" aria-pressed="false"><span class="choice-icon" aria-hidden="true">⌃</span><span>Les oreilles</span><span class="choice-arrow" aria-hidden="true">→</span></button>
+          <button class="signal-choice" type="button" data-signal="eyes" aria-pressed="false"><span class="choice-icon" aria-hidden="true">◉</span><span>Le regard</span><span class="choice-arrow" aria-hidden="true">→</span></button>
+          <button class="signal-choice" type="button" data-signal="posture" aria-pressed="false"><span class="choice-icon" aria-hidden="true">⌁</span><span>La posture</span><span class="choice-arrow" aria-hidden="true">→</span></button>
+        </div>
+        <article class="signal-reading" aria-live="polite" aria-atomic="true">
+          <p class="reading-label" id="reading-label">SIGNAL 01 / LA QUEUE</p>
+          <h3 id="reading-title">Une queue dressée</h3>
+          <p id="reading-copy">Une queue verticale accompagne souvent une approche amicale ou une salutation. Si elle fouette l’air, le chat peut être très stimulé ou agacé : laissez-lui de l’espace.</p>
+          <p class="reading-caveat"><span aria-hidden="true">✳</span> Regardez l’ensemble du corps et la situation : chaque chat a ses habitudes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="respect-band">
+      <div class="respect-mark" aria-hidden="true">✳</div>
+      <div><p class="eyebrow">LE BON RÉFLEXE</p><h2>Laisser le choix,<br>c’est déjà se comprendre.</h2></div>
+      <p class="respect-copy">Approchez calmement, proposez votre main sans insister et laissez le chat décider s’il souhaite le contact. Un recul est aussi une réponse.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>LES CHATS / CARNET DE CURIOSITÉS</span><button class="footer-button" type="button" data-go="index.html">Retour à la découverte ↑</button></footer>
+</body>
+</html>
