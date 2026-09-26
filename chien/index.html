@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f5f4ec">
+	<meta name="description" content="Un guide pratique et chaleureux pour mieux comprendre les chiens et prendre soin d'eux au quotidien.">
+	<title>Compagnons — Le guide des chiens</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			color-scheme: light;
+			--ink: #1d3028;
+			--muted: #66746c;
+			--paper: #f5f4ec;
+			--white: #fffefa;
+			--green: #244b3a;
+			--green-light: #dce9db;
+			--orange: #e56b43;
+			--blue: #dce9ed;
+			--line: #d9ddd3;
+			--sans: "DM Sans", sans-serif;
+			--display: "Manrope", sans-serif;
+		}
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+		button, input { font: inherit; }
+		button { color: inherit; }
+		.topbar { height: 76px; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(22px, 6vw, 92px); background: var(--paper); }
+		.brand { display: inline-flex; gap: 10px; align-items: center; color: var(--ink); font-family: var(--display); font-size: 18px; font-weight: 800; text-decoration: none; }
+		.brand-mark { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; background: var(--orange); color: white; font-size: 19px; }
+		.nav { display: flex; gap: clamp(16px, 3vw, 42px); align-items: center; }
+		.nav button { border: 0; padding: 10px 0; background: transparent; color: #43564b; cursor: pointer; font-size: 13px; font-weight: 600; }
+		.nav button:hover { color: var(--orange); }
+		.nav .nav-cta { padding: 11px 17px; border-radius: 4px; background: var(--green); color: white; }
+		.hero { position: relative; min-height: min(670px, calc(100vh - 76px)); display: flex; align-items: flex-end; overflow: hidden; background: #314c3c; color: white; }
+		.hero::before { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(18, 35, 27, .78), rgba(18, 35, 27, .17) 82%), linear-gradient(0deg, rgba(15, 28, 21, .45), transparent 58%); content: ""; z-index: 1; }
+		.hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 47%; }
+		.hero-copy { position: relative; z-index: 2; max-width: 760px; padding: 82px clamp(24px, 10vw, 150px) 76px; }
+		.eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 20px; color: #f6b69a; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+		.eyebrow::before { width: 26px; height: 2px; background: currentColor; content: ""; }
+		h1, h2, h3, p { margin-top: 0; }
+		h1 { max-width: 680px; margin-bottom: 20px; font-family: var(--display); font-size: clamp(48px, 7vw, 88px); font-weight: 700; line-height: .99; }
+		.hero-copy > p:not(.eyebrow) { max-width: 485px; margin-bottom: 28px; color: #edf0e9; font-size: 16px; line-height: 1.7; }
+		.hero-button { display: inline-flex; align-items: center; gap: 12px; border: 0; padding: 15px 19px; background: var(--orange); color: white; cursor: pointer; font-weight: 700; transition: background .2s, transform .2s; }
+		.hero-button:hover { transform: translateY(-2px); background: #cf5732; }
+		.hero-button span { font-size: 18px; }
+		.hero-note { position: absolute; z-index: 2; right: clamp(22px, 5vw, 72px); bottom: 34px; max-width: 180px; color: rgba(255,255,255,.84); font-size: 11px; line-height: 1.6; text-align: right; }
+		.intro-band { display: grid; grid-template-columns: 1fr 1.15fr; gap: 50px; align-items: center; padding: 72px clamp(24px, 10vw, 150px); background: var(--green); color: white; }
+		.intro-band h2 { max-width: 440px; margin: 0; font-family: var(--display); font-size: clamp(28px, 3.5vw, 43px); line-height: 1.12; }
+		.intro-band p { max-width: 510px; margin: 0; color: #d4e0d6; font-size: 15px; line-height: 1.8; }
+		.section { padding: 92px clamp(24px, 9vw, 132px); }
+		.section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 34px; }
+		.section-kicker { margin-bottom: 11px; color: #bd5736; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; }
+		h2 { margin-bottom: 0; font-family: var(--display); font-size: clamp(32px, 4vw, 49px); line-height: 1.08; }
+		.section-description { max-width: 375px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+		.breed-tools { display: flex; gap: 14px; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+		.filters { display: flex; gap: 7px; }
+		.filter-button { border: 1px solid var(--line); padding: 9px 14px; background: transparent; cursor: pointer; font-size: 12px; font-weight: 600; transition: all .18s; }
+		.filter-button:hover, .filter-button[aria-pressed="true"] { border-color: var(--green); background: var(--green); color: white; }
+		.search-wrap { position: relative; width: min(250px, 42vw); }
+		.search-wrap span { position: absolute; top: 50%; left: 12px; color: #68766b; transform: translateY(-50%); }
+		.search-wrap input { width: 100%; border: 1px solid var(--line); border-radius: 0; padding: 11px 12px 11px 35px; outline: none; background: var(--white); font-size: 12px; }
+		.search-wrap input:focus { border-color: var(--green); }
+		.breed-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+		.breed-card { overflow: hidden; background: var(--white); }
+		.breed-photo { position: relative; aspect-ratio: 1.35; overflow: hidden; background: var(--green-light); }
+		.breed-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s; }
+		.breed-card:hover .breed-photo img { transform: scale(1.045); }
+		.breed-tag { position: absolute; top: 13px; left: 13px; padding: 7px 9px; background: var(--white); color: var(--green); font-size: 10px; font-weight: 700; }
+		.breed-info { padding: 19px 20px 20px; }
+		.breed-info h3 { margin-bottom: 7px; font-family: var(--display); font-size: 19px; }
+		.breed-info p { min-height: 44px; margin-bottom: 17px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+		.breed-meta { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e9ebe4; padding-top: 13px; color: #4e6055; font-size: 11px; }
+		.breed-meta strong { color: var(--ink); }
+		.no-results { grid-column: 1 / -1; padding: 44px 20px; color: var(--muted); text-align: center; }
+		.care-section { display: grid; grid-template-columns: .88fr 1.12fr; gap: clamp(40px, 8vw, 112px); background: var(--blue); }
+		.care-copy { align-self: center; }
+		.care-copy h2 { max-width: 410px; margin-bottom: 20px; }
+		.care-copy > p:not(.section-kicker) { max-width: 415px; color: #596e72; font-size: 14px; line-height: 1.8; }
+		.care-stamp { display: inline-flex; align-items: center; gap: 9px; margin-top: 17px; color: var(--green); font-size: 12px; font-weight: 700; }
+		.care-stamp span { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; background: white; font-size: 16px; }
+		.checklist { align-self: center; padding: 27px 30px; background: var(--white); }
+		.checklist-top { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; margin-bottom: 19px; }
+		.checklist-top h3 { margin: 0; font-family: var(--display); font-size: 17px; }
+		.checklist-top span { color: var(--muted); font-size: 11px; }
+		.progress-track { height: 4px; margin-bottom: 17px; background: #e5e9e3; }
+		.progress-fill { width: 0; height: 100%; background: var(--orange); transition: width .25s; }
+		.check-row { display: flex; min-height: 52px; gap: 13px; align-items: center; border-top: 1px solid #eceee8; cursor: pointer; font-size: 13px; }
+		.check-row input { position: absolute; opacity: 0; }
+		.checkmark { display: grid; flex: 0 0 19px; width: 19px; height: 19px; place-items: center; border: 1px solid #bac5bb; color: transparent; font-size: 12px; transition: all .16s; }
+		.check-row input:checked + .checkmark { border-color: var(--green); background: var(--green); color: white; }
+		.check-row input:focus-visible + .checkmark { outline: 2px solid var(--orange); outline-offset: 2px; }
+		.check-row input:checked ~ .check-label { color: #839087; text-decoration: line-through; }
+		.quote-band { display: grid; grid-template-columns: .65fr 1.35fr; gap: 45px; align-items: center; padding: 75px clamp(24px, 10vw, 150px); background: #f2ddd1; }
+		.quote-label { color: #9b5139; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
+		blockquote { margin: 0; font-family: var(--display); font-size: clamp(23px, 3vw, 35px); font-weight: 600; line-height: 1.35; }
+		blockquote span { color: #bd5736; }
+		footer { display: flex; justify-content: space-between; gap: 22px; align-items: center; padding: 26px clamp(24px, 6vw, 92px); background: var(--ink); color: #d7dfd8; font-size: 11px; }
+		footer .brand { color: white; font-size: 14px; }
+		.footer-note { margin: 0; }
+		@media (max-width: 760px) {
+			.topbar { height: 65px; padding: 0 19px; }
+			.nav { gap: 13px; }
+			.nav button { font-size: 11px; }
+			.nav .nav-cta { padding: 9px 10px; }
+			.nav button:nth-child(2) { display: none; }
+			.hero { min-height: 610px; min-height: min(670px, calc(100svh - 65px)); }
+			.hero-image { object-position: 59% center; }
+			.hero-copy { padding: 68px 25px 65px; }
+			.hero-note { display: none; }
+			.intro-band { grid-template-columns: 1fr; gap: 20px; padding-top: 55px; padding-bottom: 55px; }
+			.section { padding-top: 68px; padding-bottom: 68px; }
+			.section-head { align-items: start; flex-direction: column; }
+			.breed-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+			.breed-info { padding: 15px; }
+			.breed-info h3 { font-size: 16px; }
+			.breed-info p { min-height: 60px; font-size: 11px; }
+			.breed-meta { font-size: 10px; }
+			.care-section { grid-template-columns: 1fr; gap: 32px; }
+			.quote-band { grid-template-columns: 1fr; gap: 15px; }
+		}
+		@media (max-width: 460px) {
+			.brand { font-size: 16px; }
+			.nav { gap: 11px; }
+			.breed-tools { align-items: stretch; flex-direction: column; }
+			.filters { overflow-x: auto; }
+			.filter-button { flex: 0 0 auto; padding: 9px 11px; }
+			.search-wrap { width: 100%; }
+			.breed-grid { grid-template-columns: 1fr; }
+			.breed-photo { aspect-ratio: 1.65; }
+			.breed-info p { min-height: 0; }
+			.checklist { padding: 23px 19px; }
+			footer { align-items: flex-start; flex-direction: column; }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+		}
+	</style>
+</head>
+<body>
+	<header class="topbar">
+		<div class="brand" aria-label="Compagnons, accueil"><span class="brand-mark" aria-hidden="true">c</span> compagnons</div>
+		<nav class="nav" aria-label="Navigation principale">
+			<button type="button" data-target="races">Les races</button>
+			<button type="button" data-target="conseils">Bien s'en occuper</button>
+			<button class="nav-cta" type="button" data-target="conseils">Ma routine</button>
+		</nav>
+	</header>
+
+	<main>
+		<section class="hero" aria-labelledby="hero-title">
+			<img class="hero-image" src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=2200&q=85" alt="Golden retriever dans un champ ensoleillé">
+			<div class="hero-copy">
+				<p class="eyebrow">Le guide des chiens</p>
+				<h1 id="hero-title">La vie est plus belle avec un chien.</h1>
+				<p>Des premiers pas aux grandes aventures, découvrez ce qui rend chaque chien unique et comment lui offrir une vie heureuse.</p>
+				<button class="hero-button" type="button" data-target="races">Rencontrer les races <span aria-hidden="true">↘</span></button>
+			</div>
+			<div class="hero-note">Un compagnon, mille façons de faire équipe.</div>
+		</section>
+
+		<section class="intro-band" aria-label="À propos des chiens">
+			<h2>Un museau curieux change toute une journée.</h2>
+			<p>Joueur, calme, sportif ou contemplatif : chaque chien a son caractère. Le secret d'une belle complicité, c'est de comprendre ses besoins et de lui laisser le temps de devenir votre meilleur ami.</p>
+		</section>
+
+		<section class="section" id="races" aria-labelledby="races-title">
+			<div class="section-head">
+				<div>
+					<p class="section-kicker">Trouver son compagnon</p>
+					<h2 id="races-title">Chaque chien a son histoire.</h2>
+				</div>
+				<p class="section-description">Quelques personnalités à découvrir. Le bon compagnon est celui dont le rythme et les besoins s'accordent avec votre quotidien.</p>
+			</div>
+			<div class="breed-tools">
+				<div class="filters" role="group" aria-label="Filtrer par taille">
+					<button class="filter-button" type="button" data-filter="all" aria-pressed="true">Tous</button>
+					<button class="filter-button" type="button" data-filter="petit" aria-pressed="false">Petits</button>
+					<button class="filter-button" type="button" data-filter="moyen" aria-pressed="false">Moyens</button>
+					<button class="filter-button" type="button" data-filter="grand" aria-pressed="false">Grands</button>
+				</div>
+				<label class="search-wrap"><span aria-hidden="true">⌕</span><input id="breed-search" type="search" placeholder="Chercher une race" aria-label="Chercher une race"></label>
+			</div>
+			<div class="breed-grid" id="breed-grid" aria-live="polite">
+				<article class="breed-card" data-size="petit" data-name="cavalier king charles">
+					<div class="breed-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1558232696-7d6f1d5d7d09?auto=format&fit=crop&w=900&q=80" alt="Petit chien au pelage clair"><span class="breed-tag">Petit format</span></div>
+					<div class="breed-info"><h3>Cavalier King Charles</h3><p>Un tendre compagnon, sociable et heureux de partager les moments tranquilles.</p><div class="breed-meta"><span>Énergie</span><strong>Douce</strong><span>6–8 kg</span></div></div>
+				</article>
+				<article class="breed-card" data-size="moyen" data-name="berger australien">
+					<div class="breed-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=900&q=80" alt="Chien au regard attentif"><span class="breed-tag">Format moyen</span></div>
+					<div class="breed-info"><h3>Berger australien</h3><p>Vif et intelligent, il adore apprendre et a besoin de bouger chaque jour.</p><div class="breed-meta"><span>Énergie</span><strong>Vive</strong><span>18–30 kg</span></div></div>
+				</article>
+				<article class="breed-card" data-size="grand" data-name="golden retriever">
+					<div class="breed-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1633722715463-d30f4f325e24?auto=format&fit=crop&w=900&q=80" alt="Golden retriever à l'extérieur"><span class="breed-tag">Grand format</span></div>
+					<div class="breed-info"><h3>Golden Retriever</h3><p>Généreux et joueur, il se plaît dans une famille qui aime les sorties.</p><div class="breed-meta"><span>Énergie</span><strong>Active</strong><span>25–34 kg</span></div></div>
+				</article>
+				<article class="breed-card" data-size="petit" data-name="teckel">
+					<div class="breed-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1612195583950-b8fd34c87093?auto=format&fit=crop&w=900&q=80" alt="Petit teckel à poil court"><span class="breed-tag">Petit format</span></div>
+					<div class="breed-info"><h3>Teckel</h3><p>Curieux et plein d'assurance, ce petit explorateur a un grand caractère.</p><div class="breed-meta"><span>Énergie</span><strong>Joyeuse</strong><span>7–14 kg</span></div></div>
+				</article>
+				<article class="breed-card" data-size="moyen" data-name="beagle">
+					<div class="breed-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1505628346881-b72b27e84530?auto=format&fit=crop&w=900&q=80" alt="Beagle attentif dans l'herbe"><span class="breed-tag">Format moyen</span></div>
+					<div class="breed-info"><h3>Beagle</h3><p>Un joyeux flair sur pattes : les promenades où l'on prend son temps sont ses préférées.</p><div class="breed-meta"><span>Énergie</span><strong>Curieuse</strong><span>9–14 kg</span></div></div>
+				</article>
+				<article class="breed-card" data-size="grand" data-name="labrador">
+					<div class="breed-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1591769225440-811ad7d6eab2?auto=format&fit=crop&w=900&q=80" alt="Labrador au pelage clair"><span class="breed-tag">Grand format</span></div>
+					<div class="breed-info"><h3>Labrador</h3><p>Amical et enthousiaste, il aime l'eau, les jeux et être au cœur de la vie de famille.</p><div class="breed-meta"><span>Énergie</span><strong>Active</strong><span>25–36 kg</span></div></div>
+				</article>
+			</div>
+		</section>
+
+		<section class="section care-section" id="conseils" aria-labelledby="care-title">
+			<div class="care-copy">
+				<p class="section-kicker">Les petits gestes comptent</p>
+				<h2 id="care-title">Une bonne routine, beaucoup de bonheur.</h2>
+				<p>Un chien épanoui, c'est surtout de l'attention au quotidien : de quoi se dépenser, manger à son rythme, et se sentir en sécurité près de vous.</p>
+				<div class="care-stamp"><span aria-hidden="true">♥</span> La régularité fait du bien</div>
+			</div>
+			<div class="checklist">
+				<div class="checklist-top"><h3>La routine du jour</h3><span id="progress-label">0 sur 4 terminés</span></div>
+				<div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
+				<label class="check-row"><input type="checkbox" data-task="walk"><span class="checkmark" aria-hidden="true">✓</span><span class="check-label">Une promenade et du temps pour renifler</span></label>
+				<label class="check-row"><input type="checkbox" data-task="water"><span class="checkmark" aria-hidden="true">✓</span><span class="check-label">De l'eau fraîche à disposition</span></label>
+				<label class="check-row"><input type="checkbox" data-task="play"><span class="checkmark" aria-hidden="true">✓</span><span class="check-label">Un jeu ou un moment de complicité</span></label>
+				<label class="check-row"><input type="checkbox" data-task="care"><span class="checkmark" aria-hidden="true">✓</span><span class="check-label">Un petit contrôle : pattes, oreilles, humeur</span></label>
+			</div>
+		</section>
+
+		<section class="quote-band" aria-label="Une pensée sur les chiens">
+			<div class="quote-label">Leur plus beau talent</div>
+			<blockquote>Ils ne demandent pas que nos journées soient parfaites. Juste qu'on les vive <span>ensemble.</span></blockquote>
+		</section>
+	</main>
+
+	<footer>
+		<div class="brand"><span class="brand-mark" aria-hidden="true">c</span> compagnons</div>
+		<p class="footer-note">Fait avec attention pour les amoureux des chiens.</p>
+		<span>© 2026 Compagnons</span>
+	</footer>
+
+	<script>
+		const navButtons = document.querySelectorAll("[data-target]");
+		navButtons.forEach((button) => {
+			button.addEventListener("click", () => {
+				document.getElementById(button.dataset.target).scrollIntoView({ behavior: "smooth" });
+			});
+		});
+
+		const filterButtons = document.querySelectorAll("[data-filter]");
+		const breedCards = [...document.querySelectorAll(".breed-card")];
+		const searchInput = document.getElementById("breed-search");
+		let activeFilter = "all";
+
+		function updateBreeds() {
+			const query = searchInput.value.trim().toLocaleLowerCase("fr");
+			let visibleCount = 0;
+			breedCards.forEach((card) => {
+				const matchesSize = activeFilter === "all" || card.dataset.size === activeFilter;
+				const matchesName = card.dataset.name.includes(query);
+				card.hidden = !(matchesSize && matchesName);
+				if (!card.hidden) visibleCount += 1;
+			});
+			const emptyMessage = document.querySelector(".no-results");
+			if (visibleCount === 0 && !emptyMessage) {
+				const message = document.createElement("p");
+				message.className = "no-results";
+				message.textContent = "Aucune race ne correspond à cette recherche.";
+				document.getElementById("breed-grid").append(message);
+			} else if (visibleCount > 0 && emptyMessage) {
+				emptyMessage.remove();
+			}
+		}
+
+		filterButtons.forEach((button) => {
+			button.addEventListener("click", () => {
+				activeFilter = button.dataset.filter;
+				filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+				updateBreeds();
+			});
+		});
+		searchInput.addEventListener("input", updateBreeds);
+
+		const taskInputs = [...document.querySelectorAll("[data-task]")];
+		const progressFill = document.getElementById("progress-fill");
+		const progressLabel = document.getElementById("progress-label");
+		taskInputs.forEach((input) => {
+			input.checked = localStorage.getItem(`companions-${input.dataset.task}`) === "done";
+			input.addEventListener("change", () => {
+				localStorage.setItem(`companions-${input.dataset.task}`, input.checked ? "done" : "todo");
+				updateProgress();
+			});
+		});
+
+		function updateProgress() {
+			const completed = taskInputs.filter((input) => input.checked).length;
+			progressLabel.textContent = `${completed} sur ${taskInputs.length} terminés`;
+			progressFill.style.width = `${(completed / taskInputs.length) * 100}%`;
+		}
+		updateProgress();
+	</script>
+</body>
+</html>
